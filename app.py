@@ -21,16 +21,18 @@ def hello_world():
 def detect():
     if not request.method == "POST":
         return
-    video = request.files['video']
-    video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
-    print(video)
-    subprocess.run("ls")
-    subprocess.run(['python3', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))])
+    formid = request.args.get('formid', 1, type=int)
+    if formid == 1:
+        video = request.files['video']
+        video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
+        print(video)
+        subprocess.run("ls")
+        subprocess.run(['python3', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))])
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     #obj = secure_filename(video.filename)
     #return obj
-    return render_template("index.html", source=os.path.join(uploads_dir, secure_filename(video.filename)))
+        return render_template("index.html", source=os.path.join(uploads_dir, secure_filename(video.filename)))
 
 #@app.route('/return-files', methods=['GET'])
 #def return_file():
