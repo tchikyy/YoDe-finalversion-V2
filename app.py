@@ -51,7 +51,7 @@ def predict():
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     #obj = secure_filename(video.filename)
     #return obj
-        return render_template("index.html", source=os.path.join(get_direct, secure_filename(video.filename)))
+        return render_template("index.html", source=url_for(os.path.join(get_direct, secure_filename(video.filename))) )
 
     if formid == 2:
         name = request.form.get("y")
