@@ -1,0 +1,223 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoDe</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico" />
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+
+    <!-- this is the purple part -->
+
+    <div id="first">
+
+        <div id="nav">
+            <div id="inner-nav">
+                <a id="logo" href="#first">YoDe</a>
+                <ul>
+                   <li><a href="#third">Models</a></li>
+                    <li><a href="#seconde">Try It</a></li>
+                    <li><a href="#metric-box2">Framework</a></li>
+                </ul>
+            
+            </div>
+        </div>
+
+
+        <div id="first-text">
+            <div id="img">
+                <img src="../static/images/image3.png" alt="img">
+            </div>
+
+            <h1 class="fade-up">YoDo</h1>
+            <h3 class="fade-up">The first web-app for the detection of Arab Sign Language using Yolov5</h3>
+            <a href="#seconde">Test It</a>
+        </div>
+  
+    </div>
+
+    <!-- this is the black part -->
+   
+    <div id="seconde">
+
+        <div id="wrapper">
+            <h3 class="fade-up">Test it out</h3>
+            <h2 class="fade-up">Select an image and observe the real computer vision</h2>
+        </div>
+
+        <form method="POST" action="{{ url_for('predict',formid=1) }}" enctype="multipart/form-data"> 
+            <input type="file" accept="image/*" id="inputfile" name="file" onchange="loadFile(event)">
+            <label for="inputfile">Choose an image ...</label>
+            
+            <div id="result"><img class="enlarge" id="img-result" src="data:image/jpeg;base64,{{ img_data }}" alt=""></div>
+            <button id="btn" type="submit">submit</button>
+        </form>
+
+    </div>
+
+    <!-- this is the white part -->
+
+    <div id="third">
+
+        <div class="nbr">
+            <div class="nbr-text">
+                <h2 class="fade-up">yolov5</h2>
+                <div class="fade-up">
+                    est une famille d'architectures et de modèles de détection d'objets ( yolov5(s/m/l/x) ) qui représente la recherche open source Ultralytics sur l'avenir de la vision par ordinateur, dans cette application, nous utilisons la version yolov5s pour sa vitesse, la taille de fichier de poids, implémenté dans PyTorch qui facilite la manipulation du modèle
+                </div>
+            </div>
+            <div class="nbr-img">
+                <img id="img121" src="../static/images/yolov5 logo .png" alt="image1">
+            </div>
+        </div>
+
+        <div class="nbr">
+            <div class="nbr-img" id="img122">
+                <img  src="../static/images/ArSLA.png" alt="image2">
+            </div>
+            <div class="nbr-text">
+                <h2 class="fade-up">Arab Sign Language</h2>
+                <div class="fade-up">est une famille de langues des signes répandues dans tout le Moyen-Orient arabe. Contrairement à l'arabe parlé, les langues des signes arabes (ArSL) ne sont pas diglossiques. Cela signifie qu'il existe une version d'une langue des signes arabe utilisée par une communauté, plutôt que deux versions</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- this is the metrics part -->
+    
+    <!-- <div id="metric-box1" class="metric-box">
+        <div class="metric" style="margin-left: 9px;"><h1 class="fade-up">87%</h1><p class="fade-up">map_0.95</p></div><div class="metric"><h1 class="fade-up">98%</h1><p class="fade-up">map_0.5</p></div><div class="metric"><h1 class="fade-up">85%</h1><p class="fade-up">precision</p></div><div class="metric"><h1 class="fade-up">5%</h1><p class="fade-up">loss</p></div>
+    </div> -->
+
+    <!-- this is the question's part -->
+
+    <div id="questions">
+
+        <h3 id="questions-h3">FAQ</h3>
+        <h2 id="questions-h2">avez-vous des questions ?</h2>
+
+        <div class="question-container">
+            <div class="quest">
+                <p onclick="onClick(this.id)" id="1" class="question">
+                  what type of object detection architecture is used ?
+                    <i id="down1" class="fas fa-chevron-down"></i>
+                </p>
+                <div class="answer">yolov5s. In this web app we used the
+                   yolov5s architecture for it's speed, model size, and
+                   weight file size. </div>
+            </div>
+        </div>
+        <div class="question-container">
+            <div class="quest">
+                <p onclick="onClick(this.id)" id="2" class="question">
+                  Can the model detect sign's in video's ?
+                    <i id="down1" class="fas fa-chevron-down"></i>
+                </p>
+                <div class="answer">Yes, you can insert a video and send it 
+                  throught the model and you will recieve the final video 
+                  with the bounding boxs. just like the images, 
+                  we advice you to use video's with size of 416x416 px
+                  or close because the model is trained on images with 
+                  this size. </div>
+            </div>
+        </div>
+        <div class="question-container">
+            <div class="quest">
+                <p onclick="onClick(this.id)" id="3" class="question">
+                  What is the best image size to achieve high precision ?
+                    <i id="down1" class="fas fa-chevron-down"></i>
+                </p>
+                <div class="answer">416x416 px. Is the best image size to 
+                  submit because our model (yolov5s) is trained on an 
+                  augmented data with 15000 images all with the same size 
+                  416 by 416. You can submit images of all sizes, but we 
+                  advises you to use image size close to 416x416. </div>
+            </div> 
+        </div>
+        <div class="question-container">
+            <div class="quest">
+                <p onclick="onClick(this.id)" id="4" class="question">
+                  Can the model detect sign's in video's ?
+                    <i id="down1" class="fas fa-chevron-down"></i>
+                </p>
+                <div class="answer">Yes, you can insert a video andthe app will
+                   send it 
+                  throught the model and you will recieve the final video 
+                  with the bounding boxs. just like the images, 
+                  we advice you to use video's with size of 416x416 px
+                  or close because the model is trained on images with 
+                  this size.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- this is the framework part -->
+
+    <div id="metric-box2" class="metric-box">
+        <div class="metric fade-in2"><img id="html" src="../static/images/html.png" alt="html"><p class="name">Html</p><p class="lorem">Est le langage de balisage conçu pour représenter cette pages web. Ce langage permet d’écrire de l’hypertexte, d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu</p></div><div class="metric"><img id="css" src="../static/images/css.png" alt="css"><p class="name">Css</p><p class="lorem">CSS forment un langage informatique qui décrit la présentation de documents HTML et XML.</p></div><div class="metric fade-in"><img id="flask" src="../static/images/flask.png" alt="flask"><p class="name">Flask</p><p class="lorem">Flask est un micro framework open source pour le développement web en Python. Il est classé comme un micro-cadre car il est très léger. Ce langage définit le backend de cette page web</p></div>
+    </div>
+
+    <!-- this is the feed back part -->
+
+    <div id="feed-back">
+        <form id="all" method="POST" action="{{ url_for('predict',formid=2) }}" >
+            <h3>Give us your feed back!</h3>
+            <div id="feed">
+                <div id="info">
+                    <label for="y">Your Name</label>
+                    <input type="text" name="y" placeholder="Enter your name ...">
+                    <label for="x">Your Email</label>
+                    <input type="email" name="x" style="margin-bottom: 0;" placeholder="Enter your @email ...">
+                
+                </div>
+                <div id="text">
+                    <label for="z">Your Message</label>
+                    <input type="text" name="z" placeholder="Write your feed back ...">
+                </div>
+            </div>
+            <input id="sub" type="submit">
+            <h4 style="color: {{ color }}; margin: 10px 0 0 0;">{{ text }}</h4>
+        </form>
+    </div>
+    
+    <!-- this is the footer part -->
+
+    <footer>
+        <p>YoDe</p>
+        <div><a target="_blank" href="https://github.com/tchikyy/Yode-finalVersion">Github</a> <a target="_blank" href="">facebook</a> <a target="_blank" href="https://colab.research.google.com/drive/1qPk_sMh2YWuRPb2Vhql6cSBoZH4ZWgFk#scrollTo=m3hIZmDa175z">google colab</a></div>
+    </footer>
+
+
+
+
+    <!-- Scripts -->
+
+    <!-- this Script is for showing the selected Image -->
+
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('img-result');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+    <!-- this Script is for the fade in effect -->
+
+    <script src="../static/app.js"></script>
+    <script src="https://kit.fontawesome.com/7bde2991a9.js" crossorigin="anonymous"></script>
+    
+    <!-- this script is for the auto scroll to the seconde/feed back part -->
+
+    {% if scrollToAnchor %}
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+          document.location.hash = '#{{ scrollToAnchor }}';
+      });
+      </script>
+    {% endif %}
+</body>
+</html>
