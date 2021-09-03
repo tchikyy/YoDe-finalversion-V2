@@ -10,16 +10,22 @@ run_with_ngrok(app)
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 
+get_direct = "static/"
+
 os.makedirs(uploads_dir, exist_ok=True)
 
+''' @app.route("/")
+def predict():
+    return render_template('index.html')
+ '''
 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET','POST'])
 def predict():
     if not request.method == "POST":
         return render_template("index.html")
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
-        video = request.files['video']
+        video = request.files['file']
         video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
         print(video)
         subprocess.run("ls")
@@ -28,7 +34,7 @@ def predict():
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     #obj = secure_filename(video.filename)
     #return obj
-        return render_template("index.html", source=os.path.join(uploads_dir, secure_filename(video.filename)))
+        return render_template("index.html", source=os.path.join(get_direct, secure_filename(video.filename)))
 
 #@app.route('/return-files', methods=['GET'])
 #def return_file():
