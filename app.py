@@ -50,5 +50,5 @@ def detect():
 # 	#print('display_video filename: ' + filename)
 # 	return redirect(url_for('static/video_1.mp4', code=200))
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     app.run()
