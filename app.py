@@ -12,15 +12,11 @@ uploads_dir = os.path.join(app.instance_path, 'uploads')
 
 os.makedirs(uploads_dir, exist_ok=True)
 
-@app.route("/")
-def hello_world():
-    return render_template('index.html')
 
-
-@app.route("/detect", methods=['POST'])
-def detect():
+@app.route("/", methods=['POST'])
+def predict():
     if not request.method == "POST":
-        return
+        return render_template("index.html")
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
         video = request.files['video']
