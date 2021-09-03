@@ -1,6 +1,6 @@
 from re import DEBUG, sub
 from flask import Flask, render_template, request, redirect, send_file, url_for
-from werkzeug.utils import secure_filename, send_from_directory
+from werkzeug.utils import secure_filename
 import os
 import subprocess
 from flask_ngrok import run_with_ngrok
