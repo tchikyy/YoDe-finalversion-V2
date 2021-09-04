@@ -1,5 +1,4 @@
-from re import DEBUG, sub
-from flask import Flask, render_template, request, redirect, send_file, url_for
+from flask import Flask, render_template, request, url_for
 from werkzeug.utils import secure_filename
 import os
 import subprocess
@@ -30,11 +29,7 @@ uploads_dir = os.path.join(app.instance_path, 'uploads')
 get_direct = "static/"
 
 os.makedirs(uploads_dir, exist_ok=True)
-
-''' @app.route("/")
-def predict():
-    return render_template('index.html')
- '''
+app.secret_key = "webApp"
 
 @app.route("/", methods=['GET','POST'])
 def predict():
@@ -42,16 +37,14 @@ def predict():
         return render_template("index.html")
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
+        tt=""
         video = request.files['file']
         video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
-        print(video)
-        subprocess.run("ls")
-        subprocess.run(['python3', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))])
-
-    # return os.path.join(uploads_dir, secure_filename(video.filename))
-    #obj = secure_filename(video.filename)
-    #return obj
-        return render_template("index.html", source=url_for(os.path.join(get_direct, secure_filename(video.filename))) )
+        
+        subprocess.run(['python3', 'detect.py','--weights', 'best.pt','--source' , os.path.join(uploads_dir, secure_filename(video.filename))])
+        if video.mimetype == "video/mp4":
+          tt = "sorry can't display the video but"
+        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=video.filename), hreff="static/"+video.filename, textt="Download", ttt= tt )
 
     if formid == 2:
         name = request.form.get("y")
@@ -71,21 +64,7 @@ def predict():
 
           t="thnx for the feed-back :)"
           return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back");    
-#@app.route('/return-files', methods=['GET'])
-#def return_file():
-#    obj = request.args.get('obj')
-#    loc = os.path.join("runs/detect", obj)
-#    print(loc)
-#    try:
-#        return send_file(os.path.join("runs/detect", obj), attachment_filename=obj)
-#        # return send_from_directory(loc, obj)
-#    except Exception as e:
-#        return str(e)
 
-# @app.route('/display/<filename>')
-# def display_video(filename):
-# 	#print('display_video filename: ' + filename)
-# 	return redirect(url_for('static/video_1.mp4', code=200))
 
 if __name__ == "__main__":
     db.create_all()
