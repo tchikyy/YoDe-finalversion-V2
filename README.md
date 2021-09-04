@@ -1,9 +1,11 @@
-# Yode-finalVersion
+# Yode-finalVersion-V2
 ## Yolov5 object detection model deployment using flask
 This repo contains example apps for exposing the [yolo5](https://github.com/ultralytics/yolov5) object detection model from [pytorch hub](https://pytorch.org/hub/ultralytics_yolov5/) via a [flask](https://flask.palletsprojects.com/en/1.1.x/) app.
 
 ## Web app
 Simple app consisting of a form where you can upload an image, and see the inference result of the model in the browser.
+<h3> This app is base on the detect.py file for inference </h3>
+<h4> this app can run inference on pictures and video's </h4>
 
 ## Type of execution 
 
@@ -24,11 +26,11 @@ to run this flask app in google colab follow these steps:
       
 - when you run the commande '!python app.py', a link of the flask_ngrok server will pop up 
 
-<img src="https://github.com/tchikyy/Yode-finalVersion/blob/main/static/images/Capture1.PNG" alt="link">
+<img src="https://github.com/tchikyy/YoDe-finalversion-V2/blob/main/static/images/Capture1.PNG" alt="link">
       
 - follow the link and the app will be up and running
 
-<img src="https://github.com/tchikyy/Yode-finalVersion/blob/main/static/images/Capture3.PNG" alt="site">
+<img src="https://github.com/tchikyy/YoDe-finalversion-V2/blob/main/static/images/Capture3.PNG" alt="site">
 
 ## Locally
 
