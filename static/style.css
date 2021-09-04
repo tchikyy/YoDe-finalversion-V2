@@ -617,3 +617,16 @@ footer div a:hover {
     border: 2px solid whitesmoke;
     box-shadow: 0 0px 10px #ffffffbb;
 }
+
+#download {
+  font-size: 24px;
+  text-decoration: none;
+  color: gray;
+  font-size: calibri;
+  margin: 10px 0 5px 0;
+  padding: 0;
+}
+
+#download:hover {
+  color: lightgray;
+}
