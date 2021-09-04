@@ -51,7 +51,13 @@
             <input type="file" accept="image/*" id="inputfile" name="file" onchange="loadFile(event)">
             <label for="inputfile">Choose an image ...</label>
             
-            <div id="result"><img class="enlarge" id="img-result" src="{{ source }}" alt=""></div>
+            <div id="result" style="text-align: center">
+              <img class="enlarge" id="img-result" src="{{ source }}" alt="">
+              <span>{{ ttt }}
+                <br>
+                <a id="download" href="{{ hreff }}" download>{{ textt }}</a>
+              </span> 
+              </div>
             <button id="btn" type="submit">submit</button>
         </form>
 
