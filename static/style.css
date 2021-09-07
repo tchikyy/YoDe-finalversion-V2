@@ -124,11 +124,21 @@ html {
 
 #img img {
     position: absolute;
-    top: 0;
     left: 100%;
     
-    transform: translate(-100%, -25%);
+    transform: translate(-110%, -15%);
     height: 85vh;
+}
+
+.fadeImg {
+    top: -200px;
+    opacity: 0%;
+}
+
+.imggg {
+    top: 0;
+    opacity: 100%;
+    transition: 1s ease-out;
 }
 
 /* first-text css's -- up -- */
