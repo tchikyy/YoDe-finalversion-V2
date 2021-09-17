@@ -24,6 +24,13 @@ class feedBack(db.Model):
     self.name = name
     self.mail = mail
 
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+
+
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 
 get_direct = "static/"
@@ -34,17 +41,47 @@ app.secret_key = "webApp"
 @app.route("/", methods=['GET','POST'])
 def predict():
     if not request.method == "POST":
-        return render_template("index.html")
+        return render_template("index.html", check="checked")
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
         tt=""
         video = request.files['file']
         video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
+
+        option = request.form['select']
+        print(option)
         
-        subprocess.run(['python3', 'detect.py','--weights', 'best.pt','--source' , os.path.join(uploads_dir, secure_filename(video.filename))])
+        s=0
+        m=0
+        l=0
+        if option == 'yolov5m':
+          m=1
+          weight = "bestm.pt"
+        elif option =='yolov5l':
+          l=1
+          weight = "bestl.pt"
+        else:
+          s=1
+          weight = "best.pt"
+
+        subprocess.run(['python3', 'detect.py','--weights', weight,'--source' , os.path.join(uploads_dir, video.filename),'--imgsz', '416','--line-thickness', '3'])
         if video.mimetype == "video/mp4":
           tt = "sorry can't display the video but"
-        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=video.filename), hreff="static/"+video.filename, textt="Download", ttt= tt )
+        
+        if s == 1:
+          Check = 'checked'
+          Check2 = ''
+          Check3 = ''
+        elif m == 1:
+          Check = ''
+          Check2 = 'checked'
+          Check3 = ''
+        elif l == 1:
+          Check = ''
+          Check2 = ''
+          Check3 = 'checked'
+
+        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=video.filename), hreff="static/"+video.filename, download_text="Download", ttt= tt, check=Check, check2=Check2, check3=Check3 )
 
     if formid == 2:
         name = request.form.get("y")
