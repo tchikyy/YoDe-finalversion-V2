@@ -101,7 +101,9 @@ def predict():
 
           t="thnx for the feed-back :)"
           return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back");    
-
+    if formid == 3:
+        subprocess.run(['python3', 'detect.py','--weights', 'best.pt','--source' , '0','--imgsz', '416','--line-thickness', '3'])
+        return render_template("index.html")
 
 if __name__ == "__main__":
     db.create_all()
