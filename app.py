@@ -33,7 +33,7 @@ def allowed_file(filename):
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 
-get_direct = "static/"
+#get_direct = "static/"
 
 os.makedirs(uploads_dir, exist_ok=True)
 app.secret_key = "webApp"
@@ -45,26 +45,31 @@ def predict():
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
         tt=""
-        video = request.files['file']
-        video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
-
-        option = request.form['select']
-        print(option)
-        
         s=0
         m=0
         l=0
+
+        option = request.form['select']
         if option == 'yolov5m':
           m=1
           weight = "bestm.pt"
+          preName = "m"
         elif option =='yolov5l':
           l=1
           weight = "bestl.pt"
+          preName = "l"
         else:
           s=1
           weight = "best.pt"
+          preName = "s"
+        
+        video = request.files['file']
+        video.save(os.path.join(uploads_dir, preName+secure_filename(video.filename)))
 
-        subprocess.run(['python3', 'detect.py','--weights', weight,'--source' , os.path.join(uploads_dir, video.filename),'--imgsz', '416','--line-thickness', '3'])
+        
+        #print(option)
+
+        subprocess.run(['python3', 'detect.py','--weights', weight,'--source' , os.path.join(uploads_dir, preName+video.filename),'--imgsz', '416','--line-thickness', '3'])
         if video.mimetype == "video/mp4":
           tt = "sorry can't display the video but"
         
@@ -81,26 +86,27 @@ def predict():
           Check2 = ''
           Check3 = 'checked'
 
-        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=video.filename), hreff="static/"+video.filename, download_text="Download", ttt= tt, check=Check, check2=Check2, check3=Check3 )
+        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=preName+video.filename), hreff="static/"+preName+video.filename, download_text="Download", ttt= tt, check=Check, check2=Check2, check3=Check3 )
 
     if formid == 2:
         name = request.form.get("y")
         email = request.form.get("x")
         text = request.form.get("z")
+        Check = 'checked'
 
         if name == '': 
-          return render_template("index.html", text="you forgot your name :(", color="red", scrollToAnchor="feed-back");
+          return render_template("index.html", text="you forgot your name :(", color="red", scrollToAnchor="feed-back", check=Check);
         elif text == '':
-          return render_template("index.html", text="you forgot your opinion :(", color="red", scrollToAnchor="feed-back");
+          return render_template("index.html", text="you forgot your opinion :(", color="red", scrollToAnchor="feed-back", check=Check);
         elif email == '':
-          return render_template("index.html", text="you forgot your email :(", color="red", scrollToAnchor="feed-back");
+          return render_template("index.html", text="you forgot your email :(", color="red", scrollToAnchor="feed-back", check=Check);
         else:
           feed_back = feedBack(name=name, email=email, text=text)
           db.session.add(feed_back)
           db.session.commit()
 
           t="thnx for the feed-back :)"
-          return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back");    
+          return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back", check=Check);    
     if formid == 3:
         subprocess.run(['python3', 'detect.py','--weights', 'best.pt','--source' , '0','--imgsz', '416','--line-thickness', '3'])
         return render_template("index.html")
