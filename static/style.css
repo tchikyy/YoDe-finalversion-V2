@@ -227,6 +227,22 @@ html {
     box-shadow: 0 0px 8px #ffffffbb;
 }
 
+#seconde #btn-2 {
+  display: block;
+    margin: 5vh auto 0;
+    color: whitesmoke;
+    padding: 15px 35px;
+    background-color: transparent;
+    border: 2px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#seconde #btn-2:hover {
+    border: 2px solid whitesmoke;
+    box-shadow: 0 0px 8px #ffffffbb;
+}
+
 #seconde form #result {
     max-width: 430px;
     max-height: 400px;
