@@ -2,6 +2,7 @@ let fadeElement = [...document.querySelectorAll('.fade-up')];
 let fadeIn = [...document.querySelectorAll('.fade-in')];
 let fadeIn2 = [...document.querySelectorAll('.fade-in2')];
 let fadeIn3 = [...document.querySelectorAll('.fadeImg')];
+let fadeIn4 = [...document.querySelectorAll('.fadeImg2')];
 
 let options = {
     rootMargin: '-10%',
@@ -91,4 +92,20 @@ function showItem4(entries){
 
 fadeIn3.forEach(item => {
     observer4.observe(item);
+})
+
+/* --------------html's transition---------------- */
+
+let observer5 = new IntersectionObserver(showItem5, options);
+
+function showItem5(entries){
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('imgggg');
+        }
+    })
+}
+
+fadeIn4.forEach(item => {
+    observer5.observe(item);
 })
