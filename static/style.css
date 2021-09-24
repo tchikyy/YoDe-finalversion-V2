@@ -371,7 +371,7 @@ html {
 #third #leftText h1 {
     font-size: 8.5vh;
     margin: 0 0 20px 0;
-    padding-left: 10%;
+    /*padding-left: 10%;*/
     height: 10vh;
     z-index: 2;
     position: relative;
@@ -384,7 +384,7 @@ html {
     font-weight: 400;
     max-width: 40%; 
     /* background-color: pink; */
-    padding-left: 10%;
+    /*padding-left: 10%;*/
     z-index: 2;
     position: relative;
 } 
@@ -418,7 +418,7 @@ html {
 #third #rightText h1 {
     font-size: 8.5vh;
     margin: 0 0 20px 0;
-    padding-left: 50%;
+    /*padding-left: 50%;*/
     height: 10vh;
     /* background-color: red; */
     /* float: right; */
@@ -433,7 +433,7 @@ html {
     font-weight: 400;
     max-width: 40%; 
     /* background-color: pink; */
-    padding-right: 10%;
+    /*padding-right: 10%;*/
     z-index: 2;
     position: relative;
 }
@@ -575,8 +575,12 @@ footer div a:hover {
     font-weight: 550;
 }
 
+.question-container .quest .question i {
+    margin-left: 10px;
+}
+
 .question-container .quest .answer {
-    margin: 0;
+    margin-right: 23px;
     padding: 0;
     background-color: rgb(210, 210, 210);
     height: 0;
@@ -718,4 +722,84 @@ footer div a:hover {
 
 #download:hover {
   color: lightgray;
+}
+
+
+
+
+#arab #circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: #cf0063;
+    margin: 0;
+    display: inline-block;
+    transition: ease-in-out;
+    transition: transform 1s;
+    /* transform: translateX(0%); */
+}
+
+.swiping {
+    transition: transform 1s;
+    transform: translateX(150%);
+}
+
+#arab {
+    width: 50px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    margin: 0;
+    display: inline-block;
+    transform: translateY(18%);
+    cursor: pointer;
+}
+
+#nav ul #crcle {
+    /* display: flex;
+    justify-items: center; */
+    margin-top: 0px;
+    padding: 30px 0 20px 0;
+    /* background-color: #a8a8a8; */
+}
+#nav ul #crcle:hover{
+box-shadow: inset 0 -5px 0 0 #fc0a7e;
+}
+
+
+.threeH1LeftArb {
+    padding-left: 25.5%;
+}
+
+.threeH3LeftArb {
+    padding-left: 10%;
+    direction: rtl;
+}
+
+.threeRightArb {
+    padding-right: 10%;
+    direction: rtl;
+}
+
+
+.threeLeftFr {
+    padding-left: 10%;
+    direction: ltr;
+}
+
+.threeH1RightFr {
+    padding-left: 50%;
+}
+
+.threeH3RightFr {
+    padding-right: 10%;
+    direction: ltr;
+}
+
+.rtl {
+    direction: rtl;
+}
+.ltr {
+    direction: ltr;
 }
