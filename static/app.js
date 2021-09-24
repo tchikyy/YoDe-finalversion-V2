@@ -109,3 +109,198 @@ function showItem5(entries){
 fadeIn4.forEach(item => {
     observer5.observe(item);
 })
+
+
+
+
+
+
+
+let swipeChld = document.querySelector('#circle')
+
+const FrenchMenu = ["LSA", "Demo", "Question"];
+const French1 = ["Le premier site web de détection de la langue des signes arabe avec Yolov5","Testez-le"];
+const French2 = ["Testez-le","Sélectionnez une image et commencez la détection","Choisissez une image ...","Soumettre","Ou","Detecter en temp réel","Live"];
+const French3 = ["Langue des signes arabe","La langue des signes arabe (LSA) est la principale méthode de communication entre les personnes malentendantes ou sourdes et les membres de leur communauté qui interagissent avec elles au sein des communautés arabes. Il existe certainement d'autres formes de communication, cependant, ces méthodes peuvent ne pas prendre en charge l'interaction naturelle, où le destinataire du message de communication n'a pas à apprendre la langue des signes ou toute autre méthode de communication.","L'alphabet de LSA","La langue des signes arabe contient 28 lettres alphabétiques principales commençant par ''Alif'' et se terminant par ''Ya'', toutes représentées par un geste de la main"];
+const FrenchQues = ["FAQ","Avez-vous des questions ?","Combien de versions différentes de la langue des signes arabe existent ? <i id='down1' class='fas fa-chevron-down'></i>","Contrairement à l'arabe parlé, les langues des signes arabes (ArSL) ne sont pas diglossiques. Cela signifie qu'il existe une version d'une langue des signes arabe utilisée par une communauté, plutôt que deux versions.","La langue des signes arabe utilise-t-elle plus que des gestes de la main ? <i id='down1' class='fas fa-chevron-down'></i>","En plus des « signes », la langue des signes arabe comprend des expressions faciales, des gestes et un langage corporel pour communiquer. La langue des signes utilise son propre système de grammaire, qui implique des structures de phrases différentes de l'arabe parlé.","Quelle est la meilleure façon de communiquer avec une personne sourde si je ne connais pas la langue des signes ? <i id='down1' class='fas fa-chevron-down'></i>","Les personnes sourdes veulent aussi vraiment faire partie du monde des entendants. Ils veulent communiquer. Ainsi, ils le découvriront par tous les moyens nécessaires. Qu'il s'agisse de taper sur un téléphone, d'écrire, de vous apprendre à signer les bases absolues, juste pour faire passer le message.","Existe-t-il une langue des signes universelle ? <i id='down1' class='fas fa-chevron-down'></i>","Non, même pas près. En réalité, il existe autant de langues des signes que de langues parlées. De la langue des signes américaine ou britannique à la langue des signes arabe, chacune est aussi similaire aux autres que le chinois l'est à l'anglais.<br>Comme toute langue, la langue des signes s'est établie au sein de certaines communautés et a été influencée par les influences régionales et culturelles qui entouraient ses locuteurs natifs."];
+const FrenchFeed = ["Donnez-nous votre avis !","Nom complet","Adresse email","Votre message"];
+const FrenchFeedValue = ["Entrez votre nom ...","Entrer votre @email ...","Écrivez vos commentaires ..."];
+
+const ArabMenu = ["اللغة", "جرب", "أسئلة"];
+const Arab1 = ["Yolov5 أول موقع للكشف عن لغة الإشارة العربية مع","اختبرها"];                   
+const Arab2 = ["اختبرها","حدد صورة وابدأ الاكتشاف","... اختر صورة","إرسال","أو","كشف في الوقت الحقيقي","مباشر"];
+const Arab3 = ["لغة الإشارة العربية", "لغة الإشارة هي الطريقة الأساسية للتواصل بين الأشخاص الذين يعانون من ضعف السمع أو الصم وأفراد مجتمعهم الذين يتفاعلون معهم. هناك بالتأكيد أشكال أخرى للتواصل ، ومع ذلك ، قد لا تدعم هذه الأساليب التفاعل الطبيعي ، حيث لا يتعين على متلقي رسالة الاتصال تعلم لغة الإشارة أو أي وسيلة اتصال أخرى.","أبجدية اللغة","تتكون لغة الإشارة العربية من 28 حرفًا أبجديًا رئيسيًا تبدأ بالحرف أ وتنتهي بالحرف ب"];      
+const ArabQues = ["أسئلة","هل لديكم أسئلة ؟"," <i id='down1' class='fas fa-chevron-down'></i> كم عدد الإصدارات المختلفة للغة الإشارة العربية الموجودة؟","على عكس اللغة العربية المنطوقة ، فإن لغات الإشارة العربية ليست ثنائية اللغة. هذا يعني أن هناك إصدارًا واحدًا للغة الإشارة العربية يستخدمه المجتمع بدلاً من نسختين.","هل تستخدم لغة الإشارة العربية أكثر من إيماءات اليد؟ <i id='down1' class='fas fa-chevron-down'></i>","بالإضافة إلى 'الإشارات' ، تشتمل لغة الإشارة العربية على تعابير الوجه والإيماءات ولغة الجسد للتواصل. تستخدم لغة الإشارة نظامها النحوي الخاص بها ، والذي يتضمن تراكيب جمل مختلفة عن اللغة العربية المنطوقة."," <i id='down1' class='fas fa-chevron-down'></i> ما هي أفضل طريقة للتواصل مع شخص أصم إذا لم أكن أعرف لغة الإشارة؟","يريد الصم أيضًا أن يكونوا جزءًا من عالم السمع. يريدون التواصل. وبالتالي ، سوف يكتشفونه بأي وسيلة ضرورية. سواء كان الأمر يتعلق بكتابة الهاتف ، أو الكتابة ، أو تعليم نفسك كيفية التوقيع على الأساسيات المطلقة ، فقط لتوضيح الفكرة."," <i id='down1' class='fas fa-chevron-down'></i> هل توجد لغة إشارة عالمية؟","لا ، ولا حتى قريبة. في الواقع ، هناك العديد من لغات الإشارة كما هو الحال في اللغات المنطوقة. من لغة الإشارة الأمريكية أو البريطانية إلى لغة الإشارة العربية ، كل منها مشابه للآخرين مثل الصينية إلى الإنجليزية.<br>مثل أي لغة ، رسخت لغة الإشارة نفسها داخل مجتمعات معينة وتأثرت بالتأثيرات الإقليمية والثقافية التي أحاطت بمتحدثيها الأصليين."];
+const ArabFeed = ["! أعطنا رأيك","اسمك","بريدك الإلكتروني","رسالتك"];
+const ArabicFeedValue = [" ... أدخل أسمك","... أدخل بريدك الإلكتروني","... اكتب تعليقاتك"];
+
+
+function swipe() {
+    var arabMenu = [...document.querySelectorAll('.ArabMenu')];
+    var frenchMenu = [...document.querySelectorAll('.FrenchMenu')];
+    var arabic1 = [...document.querySelectorAll('.Arab1')];
+    var french1 = [...document.querySelectorAll('.French1')];
+    var arabic2 = [...document.querySelectorAll('.Arab2')];
+    var french2 = [...document.querySelectorAll('.French2')];
+    var arabic3 = [...document.querySelectorAll('.Arab3')];
+    var french3 = [...document.querySelectorAll('.French3')];
+    var arabicQues = [...document.querySelectorAll('.ArabQues')];
+    var frenchQues = [...document.querySelectorAll('.FrenchQues')];
+    var arabicFeed = [...document.querySelectorAll('.ArabFeed')];
+    var frenchFeed = [...document.querySelectorAll('.FrenchFeed')];
+    var frenchFeedValue = [...document.querySelectorAll('.FrenchFeedValue')];
+    var arabicFeedValue = [...document.querySelectorAll('.ArabicFeedValue')];
+
+    var left = document.querySelector('.left');
+    var left2 = document.querySelector('.left2');
+    var right = document.querySelector('.right');
+    var right2 = document.querySelector('.right2');
+
+    var submit = document.querySelector('#sub');
+
+    var quest = [...document.querySelectorAll(".quest")];
+    
+    swipeChld.classList.toggle('swiping');
+    let i = 0;
+    /* console.log(french1); */
+
+    if(french1.length == 0){
+    arabMenu.forEach(item => {
+        item.innerHTML = ArabMenu[i];
+        item.classList.toggle("FrenchMenu");
+        item.classList.toggle("ArabMenu");
+        i++;
+    })
+    i = 0;
+    arabic1.forEach(item => {
+        item.innerHTML = Arab1[i];
+        item.classList.toggle("French1");
+        item.classList.toggle("Arab1");
+        i++;
+    })
+    i=0;
+    arabic2.forEach(item => {
+        item.innerHTML = Arab2[i];
+        item.classList.toggle("French2");
+        item.classList.toggle("Arab2");
+        i++;
+    })
+    i=0;
+    arabic3.forEach(item => {
+        item.innerHTML = Arab3[i];
+        item.classList.toggle("French3");
+        item.classList.toggle("Arab3");
+        i++;
+    })
+    i=0;
+    arabicQues.forEach(item => {
+        item.innerHTML = ArabQues[i];
+        item.classList.toggle("FrenchQues");
+        item.classList.toggle("ArabQues");
+        i++;
+    })
+    i=0;
+    arabicFeed.forEach(item => {
+        item.innerHTML = ArabFeed[i];
+        item.classList.toggle("FrenchFeed");
+        item.classList.toggle("ArabFeed");
+        i++;
+    })
+    i=0;
+    arabicFeedValue.forEach(item => {
+        item.setAttribute('placeholder',ArabicFeedValue[i]); 
+        item.classList.toggle("FrenchFeedValue");
+        item.classList.toggle("ArabicFeedValue");
+        i++;
+    })
+
+    submit.value = "إرسال";
+
+    }else{
+        frenchMenu.forEach(item => {
+             item.innerHTML = FrenchMenu[i];
+             item.classList.toggle("FrenchMenu");
+             item.classList.toggle("ArabMenu");
+             i++;
+        })
+        i = 0;
+        french1.forEach(item => {
+            item.innerHTML = French1[i];
+            item.classList.toggle("Arab1");
+            item.classList.toggle("French1");
+            i++;
+        })
+        i=0;
+        french2.forEach(item => {
+            item.innerHTML = French2[i];
+            item.classList.toggle("French2");
+            item.classList.toggle("Arab2");
+            i++;
+        })
+        i=0;
+        french3.forEach(item => {
+            item.innerHTML = French3[i];
+            item.classList.toggle("French3");
+            item.classList.toggle("Arab3");
+            i++;
+        })
+        i=0;
+        frenchQues.forEach(item => {
+            item.innerHTML = FrenchQues[i];
+            item.classList.toggle("FrenchQues");
+            item.classList.toggle("ArabQues");
+            i++;
+        })
+        i=0;
+        frenchFeed.forEach(item => {
+            item.innerHTML = FrenchFeed[i];
+            item.classList.toggle("FrenchFeed");
+            item.classList.toggle("ArabFeed");
+            i++;
+        })
+        i=0;
+        frenchFeedValue.forEach(item => {
+            item.setAttribute('placeholder',FrenchFeedValue[i]); 
+            item.classList.toggle("FrenchFeedValue");
+            item.classList.toggle("ArabicFeedValue");
+            i++;
+        })
+
+        submit.value = "Envoyer";
+
+  }
+
+
+        left.classList.toggle("threeLeftFr");
+        left.classList.toggle("threeH1LeftArb");
+
+        left2.classList.toggle("threeH3LeftArb");
+        left2.classList.toggle("threeLeftFr");
+
+        right.classList.toggle("threeRightArb");
+        right.classList.toggle("threeH1RightFr");
+
+        right2.classList.toggle("threeRightArb");
+        right2.classList.toggle("threeH3RightFr");
+    
+        quest.forEach(item => {
+            item.classList.toggle("rtl");
+            item.classList.toggle("ltr");
+        })
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
