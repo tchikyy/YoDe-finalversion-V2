@@ -17,9 +17,14 @@
             <div id="inner-nav">
                 <a id="logo" href="#first">YoDe</a>
                 <ul>
-                   <li><a href="#third">LSA</a></li>
-                    <li><a href="#seconde">Demo</a></li>
-                    <li><a href="#questions">Question</a></li>
+                  <li id="crcle">
+                        <div id="arab" onclick="swipe()">
+                        <div id="circle"></div>
+                        </div>
+                    </li>
+                   <li><a class="ArabMenu" href="#third">LSA</a></li>
+                    <li><a class="ArabMenu" href="#seconde">Demo</a></li>
+                    <li><a class="ArabMenu" href="#questions">Question</a></li>
                 </ul>
             
             </div>
@@ -32,8 +37,8 @@
             </div>
 
             <h1 class="fade-up">YoDo</h1>
-            <h3 class="fade-up">Le premier site web de détection de la langue des signes arabe avec Yolov5</h3>
-            <a href="#seconde">Testez-le</a>
+            <h3 class="fade-up Arab1">Le premier site web de détection de la langue des signes arabe avec Yolov5</h3>
+            <a class="Arab1" href="#seconde">Testez-le</a>
         </div>
   
     </div>
@@ -43,21 +48,21 @@
     <div id="seconde">
 
         <div id="wrapper">
-            <h3 class="fade-up">Testez-le</h3>
-            <h2 class="fade-up">Sélectionnez une image et commencez la détection</h2>
+            <h3 class="fade-up Arab2">Testez-le</h3>
+            <h2 class="fade-up Arab2">Sélectionnez une image et commencez la détection</h2>
         </div>
 
         <form method="POST" action="{{ url_for('predict',formid=1) }}" enctype="multipart/form-data"> 
             <div id="firstDiv">
                 <input type="file" accept="image/*" id="inputfile" name="file" onchange="loadFile(event)">
-                <label for="inputfile">Choisissez une image ...</label>
+                <label class="Arab2" for="inputfile">Choisissez une image ...</label>
                 
                 <div id="result" style="text-align: center">
                     <a href="{{ hreff }}" target="_blank"><img class="enlarge" id="img-result" src="{{ source }}" alt=""></a>
                     <br>
                     <a id="download" href="{{ hreff }}" download>{{ download_text }}</a>
                 </div>
-                <button id="btn" type="submit">Soumettre</button>
+                <button class="Arab2" id="btn" type="submit">Soumettre</button>
             </div>
             <div class="wrapper2">
                 <input type="radio" name="select" id="option-1" value="yolov5s" {{ check }}>
@@ -78,12 +83,12 @@
             </div>
         </form>
         
-        <h2 style="color: #c9c9c9; font-size: 24px;">Ou</h2>
+        <h2 class="Arab2" style="color: #c9c9c9; font-size: 24px;">Ou</h2>
         <hr width="600px" style="height: 3px; border-radius: 5px; background-color: #c9c9c9;">
-        <h2 class="fade-up" style="font-size: 38px;">Detecter en temp réel</h2>
+        <h2 class="fade-up Arab2" style="font-size: 38px;">Detecter en temp réel</h2>
 
         <form method="POST" action="{{ url_for('predict',formid=3) }}" enctype="multipart/form-data">
-          <button id="btn-2" type="submit">Live</button>
+          <button class="Arab2" id="btn-2" type="submit">Live</button>
         </form>
 
     </div>
@@ -97,8 +102,8 @@
                 <img class="fadeImg2" src="../static/images/ArSL2.png" alt="img">
             </div>
             
-            <h1>Langue des signes arabe</h1>
-            <h3>La langue des signes arabe (LSA) est la principale méthode de communication entre 
+            <h1 class="Arab3 threeLeftFr left">Langue des signes arabe</h1>
+            <h3 class="Arab3 threeLeftFr left2">La langue des signes arabe (LSA) est la principale méthode de communication entre 
                 les personnes malentendantes ou sourdes et les membres de leur communauté 
                 qui interagissent avec elles au sein des communautés arabes. Il existe 
                 certainement d'autres formes de communication, cependant, ces méthodes 
@@ -112,8 +117,8 @@
                 <img class="fadeImg2" src="../static/images/ArSl1.png" alt="img">
             </div>
             
-            <h1>L'alphabet de LSA </h1>
-            <h3>La langue des signes arabe contient 28 lettres alphabétiques principales 
+            <h1 class="Arab3 threeH1RightFR right">L'alphabet de LSA </h1>
+            <h3 class="Arab3 threeH3RightFr right2">La langue des signes arabe contient 28 lettres alphabétiques principales 
                 commençant par ''Alif'' et se terminant par ''Ya'', toutes représentées par 
                 un geste de la main </h3>
 
@@ -126,28 +131,28 @@
 
     <div id="questions">
 
-        <h3 id="questions-h3">FAQ</h3>
-        <h2 id="questions-h2">Avez-vous des questions ?</h2>
+        <h3 id="questions-h3" class="ArabQues">FAQ</h3>
+        <h2 id="questions-h2" class="ArabQues">Avez-vous des questions ?</h2>
 
         <div class="question-container">
-            <div class="quest">
-                <p onclick="onClick(this.id)" id="1" class="question">
+            <div class="quest ltr">
+                <p onclick="onClick(this.id)" id="1" class="question ArabQues">
                     Combien de versions différentes de la langue des signes arabe existent ?
                     <i id="down1" class="fas fa-chevron-down"></i>
                 </p>
-                <div class="answer">Contrairement à l'arabe parlé, 
+                <div class="answer ArabQues">Contrairement à l'arabe parlé, 
                     les langues des signes arabes (ArSL) ne sont pas diglossiques. 
                     Cela signifie qu'il existe une version d'une langue des signes 
                     arabe utilisée par une communauté, plutôt que deux versions. </div>
             </div>
         </div>
         <div class="question-container">
-            <div class="quest">
-                <p onclick="onClick(this.id)" id="2" class="question">
+            <div class="quest ltr">
+                <p onclick="onClick(this.id)" id="2" class="question ArabQues">
                     La langue des signes arabe utilise-t-elle plus que des gestes de la main ?
                     <i id="down1" class="fas fa-chevron-down"></i>
                 </p>
-                <div class="answer">En plus des « signes », la langue des signes arabe 
+                <div class="answer ArabQues">En plus des « signes », la langue des signes arabe 
                     comprend des expressions faciales, des gestes et un langage corporel 
                     pour communiquer. La langue des signes utilise son propre système de 
                     grammaire, qui implique des structures de phrases différentes de 
@@ -155,12 +160,12 @@
             </div>
         </div>
         <div class="question-container">
-            <div class="quest">
-                <p onclick="onClick(this.id)" id="3" class="question">
+            <div class="quest ltr">
+                <p onclick="onClick(this.id)" id="3" class="question ArabQues">
                     Quelle est la meilleure façon de communiquer avec une personne sourde si je ne connais pas la langue des signes ? ?
                     <i id="down1" class="fas fa-chevron-down"></i>
                 </p>
-                <div class="answer">Les personnes sourdes veulent aussi vraiment faire partie
+                <div class="answer ArabQues">Les personnes sourdes veulent aussi vraiment faire partie
                      du monde des entendants. Ils veulent communiquer. Ainsi, ils le
                      découvriront par tous les moyens nécessaires. Qu'il s'agisse de 
                      taper sur un téléphone, d'écrire, de vous apprendre à signer les 
@@ -168,12 +173,12 @@
             </div> 
         </div>
         <div class="question-container">
-            <div class="quest">
-                <p onclick="onClick(this.id)" id="4" class="question">
+            <div class="quest ltr">
+                <p onclick="onClick(this.id)" id="4" class="question ArabQues">
                     Existe-t-il une langue des signes universelle ?
                     <i id="down1" class="fas fa-chevron-down"></i>
                 </p>
-                <div class="answer">Non, même pas près. En réalité, il existe autant de 
+                <div class="answer ArabQues">Non, même pas près. En réalité, il existe autant de 
                     langues des signes que de langues parlées. De la langue des signes 
                     américaine ou britannique à la langue des signes arabe, chacune est 
                     aussi similaire aux autres que le chinois l'est à l'anglais.
@@ -191,18 +196,18 @@
 
     <div id="feed-back">
         <form id="all" method="POST" action="{{ url_for('predict',formid=2) }}" >
-            <h3>Donnez-nous votre avis !</h3>
+            <h3 class="ArabFeed">Donnez-nous votre avis !</h3>
             <div id="feed">
                 <div id="info">
-                    <label for="y">Nom complet</label>
-                    <input type="text" name="y" placeholder="Entrez votre nom ...">
-                    <label for="x">Adresse email</label>
-                    <input type="email" name="x" style="margin-bottom: 0;" placeholder="Entrer votre @email ...">
+                    <label class="ArabFeed" for="y">Nom complet</label>
+                    <input class="ArabicFeedValue" type="text" name="y" placeholder="Entrez votre nom ...">
+                    <label class="ArabFeed" for="x">Adresse email</label>
+                    <input class="ArabicFeedValue" type="email" name="x" style="margin-bottom: 0;" placeholder="Entrer votre @email ...">
                 
                 </div>
                 <div id="text">
-                    <label for="z">Votre message</label>
-                    <input type="text" name="z" placeholder="Écrivez vos commentaires ...">
+                    <label class="ArabFeed" for="z">Votre message</label>
+                    <input class="ArabicFeedValue" type="text" name="z" placeholder="Écrivez vos commentaires ...">
                 </div>
             </div>
             <input id="sub" type="submit">
