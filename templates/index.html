@@ -55,41 +55,50 @@
         <form method="POST" action="{{ url_for('predict',formid=1) }}" enctype="multipart/form-data"> 
             <div id="firstDiv">
                 <input type="file" accept="image/*" id="inputfile" name="file" onchange="loadFile(event)">
-                <label class="Arab2" for="inputfile">Choisissez une image ...</label>
+                <label id="label1" class="Arab2" for="inputfile">Choisissez une image ...</label>
                 
                 <div id="result" style="text-align: center">
                     <a href="{{ hreff }}" target="_blank"><img class="enlarge" id="img-result" src="{{ source }}" alt=""></a>
                     <br>
                     <a id="download" href="{{ hreff }}" download>{{ download_text }}</a>
                 </div>
+
+                <div class="wrapper2">
+                  <input type="radio" name="select" id="option-1" value="yolov5s" {{ check }}>
+                  <input type="radio" name="select" id="option-2" value="yolov5m" {{ check2 }}>
+                  <input type="radio" name="select" id="option-3" value="yolov5l" {{ check3 }}>
+                  <label for="option-1" class="option option-1">
+                      <div class="dot"></div>
+                      <span>Yolov5s</span>
+                  </label>
+                  <label for="option-2" class="option option-2">
+                      <div class="dot"></div>
+                      <span>Yolov5m</span>
+                  </label>
+                  <label for="option-3" class="option option-3">
+                      <div class="dot"></div>
+                      <span>Yolov5L</span>
+                  </label>
+              </div>
+
                 <button class="Arab2" id="btn" type="submit">Soumettre</button>
-            </div>
-            <div class="wrapper2">
-                <input type="radio" name="select" id="option-1" value="yolov5s" {{ check }}>
-                <input type="radio" name="select" id="option-2" value="yolov5m" {{ check2 }}>
-                <input type="radio" name="select" id="option-3" value="yolov5l" {{ check3 }}>
-                <label for="option-1" class="option option-1">
-                    <div class="dot"></div>
-                    <span>Yolov5s</span>
-                </label>
-                <label for="option-2" class="option option-2">
-                    <div class="dot"></div>
-                    <span>Yolov5m</span>
-                </label>
-                <label for="option-3" class="option option-3">
-                    <div class="dot"></div>
-                    <span>Yolov5L</span>
-                </label>
             </div>
         </form>
         
-        <h2 class="Arab2" style="color: #c9c9c9; font-size: 24px;">Ou</h2>
-        <hr width="600px" style="height: 3px; border-radius: 5px; background-color: #c9c9c9;">
-        <h2 class="fade-up Arab2" style="font-size: 38px;">Detecter en temp réel</h2>
+        <h3 class="fade-up Arab2" style="color: #a8a8a8; margin-top: 20vh;">Ou bien</h3>
+        <h2 class="fade-up Arab2" style="font-size: 38px;margin-top: 0;">Démarrer la détection en temps réel</h2>
 
         <form method="POST" action="{{ url_for('predict',formid=3) }}" enctype="multipart/form-data">
-          <button class="Arab2" id="btn-2" type="submit">Live</button>
+          <button class="Arab2" id="btn-2" type="submit">
+            <img src="../static/images/webcam-512_2.png" alt="webcam" id="webcam" width="100px" style="margin: auto;">
+            <br>
+            <br>
+            <br>
+            <span style="font-size: 20px;">Live</span>          
+          </button>
         </form>
+
+        <h2 class="Arab2" style="color: gray; font-size: 12px;">Cliquez sur "q" pour sortir du mode detection en temp réel</h2>
 
     </div>
 
@@ -219,7 +228,7 @@
 
     <footer>
         <p>YoDe</p>
-        <div><a target="_blank" href="https://github.com/tchikyy/Yode-finalVersion">Github</a> <a target="_blank" href="">Facebook</a> <a target="_blank" href="https://colab.research.google.com/drive/1qPk_sMh2YWuRPb2Vhql6cSBoZH4ZWgFk#scrollTo=m3hIZmDa175z">Google Colab</a></div>
+        <div><a target="_blank" href="https://github.com/tchikyy/Yode-finalVersion">Github</a> <a target="_blank" href="https://colab.research.google.com/drive/1qPk_sMh2YWuRPb2Vhql6cSBoZH4ZWgFk#scrollTo=m3hIZmDa175z">Google Colab</a></div>
     </footer>
 
 
