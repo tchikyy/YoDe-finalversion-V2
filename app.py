@@ -41,7 +41,7 @@ app.secret_key = "webApp"
 @app.route("/", methods=['GET','POST'])
 def predict():
     if not request.method == "POST":
-        return render_template("index.html", check="checked")
+        return render_template("index.html", check="checked", source="../static/images/Frame 1 (1).png")
     formid = request.args.get('formid', 1, type=int)
     if formid == 1:
         tt=""
@@ -71,7 +71,7 @@ def predict():
 
         subprocess.run(['python3', 'detect.py','--weights', weight,'--source' , os.path.join(uploads_dir, preName+video.filename),'--imgsz', '416','--line-thickness', '3'])
         if video.mimetype == "video/mp4":
-          tt = "sorry can't display the video but"
+          tt = "désolé, je ne peux pas afficher la vidéo"
         
         if s == 1:
           Check = 'checked'
@@ -86,7 +86,7 @@ def predict():
           Check2 = ''
           Check3 = 'checked'
 
-        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=preName+video.filename), hreff="static/"+preName+video.filename, download_text="Download", ttt= tt, check=Check, check2=Check2, check3=Check3 )
+        return render_template("index.html", scrollToAnchor="seconde", source=url_for('static', filename=preName+video.filename), hreff="static/"+preName+video.filename, download_text="Télécharger", ttt= tt, check=Check, check2=Check2, check3=Check3 )
 
     if formid == 2:
         name = request.form.get("y")
@@ -95,21 +95,21 @@ def predict():
         Check = 'checked'
 
         if name == '': 
-          return render_template("index.html", text="you forgot your name :(", color="red", scrollToAnchor="feed-back", check=Check);
+          return render_template("index.html", text="Tu as oublié ton nom :(", color="red", scrollToAnchor="feed-back", check=Check, source="../static/images/Frame 1 (1).png");
         elif text == '':
-          return render_template("index.html", text="you forgot your opinion :(", color="red", scrollToAnchor="feed-back", check=Check);
+          return render_template("index.html", text="Tu as oublié ton avis :(", color="red", scrollToAnchor="feed-back", check=Check, source="../static/images/Frame 1 (1).png");
         elif email == '':
-          return render_template("index.html", text="you forgot your email :(", color="red", scrollToAnchor="feed-back", check=Check);
+          return render_template("index.html", text="Tu as oublié ton email :(", color="red", scrollToAnchor="feed-back", check=Check, source="../static/images/Frame 1 (1).png");
         else:
           feed_back = feedBack(name=name, email=email, text=text)
           db.session.add(feed_back)
           db.session.commit()
 
-          t="thnx for the feed-back :)"
-          return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back", check=Check);    
+          t="merci pour le retour :)"
+          return render_template("index.html", text=t, color="lime", scrollToAnchor="feed-back", check=Check, source="../static/images/Frame 1 (1).png");    
     if formid == 3:
         subprocess.run(['python3', 'detect.py','--weights', 'best.pt','--source' , '0','--imgsz', '416','--line-thickness', '3'])
-        return render_template("index.html")
+        return render_template("index.html", check="checked", source="../static/images/Frame 1 (1).png")
 
 if __name__ == "__main__":
     db.create_all()
